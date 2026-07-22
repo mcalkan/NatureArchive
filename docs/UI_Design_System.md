@@ -1,38 +1,30 @@
-\## Brand Personality
+# Nature Archive
 
-
-
-Nature Archive is:
-
-
-
-\- Calm
-
-\- Trustworthy
-
-\- Professional
-
-\- Curious
-
-\- Respectful of Nature
-
-\- Minimal
-
-
-
-\# Nature Archive UI Design System
-
-
+## UI Design System
 
 Version: 1.0
 
+Status: Stable
 
+Last Updated:
+22 July 2026
 
-\---
+---
 
+## Brand Personality
 
+Nature Archive is:
 
-\# 1. Design Philosophy
+- Calm
+- Trustworthy
+- Professional
+- Curious
+- Respectful of Nature
+- Minimal
+
+---
+
+# 1. Design Philosophy
 
 
 
@@ -1144,7 +1136,7 @@ Screens should reuse components instead of creating slightly different versions.
 
 
 
-\# 9. Motion \& Animation
+\# 6. Motion \& Animation
 
 
 
@@ -1322,7 +1314,7 @@ Users who reduce motion at the operating system level should experience fewer no
 
 
 
-\# 10. Accessibility
+\# 7. Accessibility
 
 
 
@@ -1542,7 +1534,7 @@ Accessibility improvements should benefit all users, not only those with specifi
 
 
 
-\# 11. Design Tokens
+\# 8. Design Tokens
 
 
 
