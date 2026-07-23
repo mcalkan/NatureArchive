@@ -78,3 +78,43 @@ Users must be able to capture observations anywhere without worrying about inter
 
 \- Maps may require internet depending on provider, but GPS coordinates are always stored locally.
 
+
+
+\## DEC-005
+
+
+
+Title:
+
+Compose State Before ViewModel
+
+
+
+Status:
+
+Accepted
+
+
+
+Decision
+
+
+
+Local UI state will be implemented using rememberSaveable before introducing ViewModels.
+
+
+
+Rationale
+
+
+
+The project follows Incremental Architecture.
+
+State management should evolve only when shared or persistent state becomes necessary.
+
+
+
+Applied in:
+
+Sprint 04
+

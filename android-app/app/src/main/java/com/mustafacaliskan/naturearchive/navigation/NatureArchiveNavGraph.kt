@@ -28,11 +28,7 @@ fun NatureArchiveNavGraph(
         }
 
         composable(Routes.NewObservation) {
-            NewObservationScreen(
-                onBackClick = {
-                    navController.popBackStack()
-                }
-            )
+            NewObservationScreen()
         }
     }
 }

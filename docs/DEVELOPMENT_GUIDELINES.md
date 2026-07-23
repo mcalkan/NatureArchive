@@ -283,3 +283,15 @@ Avoid technical-looking interfaces.
 Favor generous spacing, rounded corners and subtle elevation.
 
 The application should feel like a premium field journal rather than a data management tool.
+
+### UI State Rule
+
+State should remain local to the screen until there is a clear requirement for sharing or persistence.
+
+Prefer:
+
+- remember
+- rememberSaveable
+- derivedStateOf
+
+Avoid introducing ViewModels prematurely.

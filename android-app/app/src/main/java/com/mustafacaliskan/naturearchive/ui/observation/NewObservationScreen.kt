@@ -2,37 +2,62 @@ package com.mustafacaliskan.naturearchive.ui.observation
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mustafacaliskan.naturearchive.R
 import com.mustafacaliskan.naturearchive.ui.components.NatureArchiveScaffold
 import com.mustafacaliskan.naturearchive.ui.theme.NatureArchiveTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewObservationScreen(
-    modifier: Modifier = Modifier,
-    onBackClick: () -> Unit = {}
+    modifier: Modifier = Modifier
 ) {
+    var title by rememberSaveable { mutableStateOf("") }
+    var notes by rememberSaveable { mutableStateOf("") }
+    var expanded by rememberSaveable { mutableStateOf(false) }
+    var selectedCategory by rememberSaveable { mutableStateOf("") }
+
+    val categories = listOf(
+        stringResource(R.string.new_observation_category_wildlife),
+        stringResource(R.string.new_observation_category_plant),
+        stringResource(R.string.new_observation_category_bird),
+        stringResource(R.string.new_observation_category_mushroom),
+        stringResource(R.string.new_observation_category_trail)
+    )
+
+    val isFormValid by remember(title, notes) {
+        derivedStateOf {
+            title.trim().isNotEmpty() && notes.trim().isNotEmpty()
+        }
+    }
+
     NatureArchiveScaffold(
         title = stringResource(R.string.new_observation_title),
         modifier = modifier
@@ -54,14 +79,15 @@ fun NewObservationScreen(
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = title,
+                onValueChange = { title = it },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = NewObservationFieldSpacing),
                 placeholder = {
                     Text(text = stringResource(R.string.new_observation_title_label))
-                }
+                },
+                singleLine = true
             )
 
             Spacer(modifier = Modifier.height(NewObservationFieldSpacing))
@@ -73,10 +99,11 @@ fun NewObservationScreen(
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = notes,
+                onValueChange = { notes = it },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .heightIn(min = NewObservationNotesMinHeight)
                     .padding(top = NewObservationFieldSpacing),
                 placeholder = {
                     Text(text = stringResource(R.string.new_observation_notes_label))
@@ -91,40 +118,51 @@ fun NewObservationScreen(
                 color = MaterialTheme.colorScheme.onSurface
             )
 
-            Surface(
-                shape = MaterialTheme.shapes.medium,
-                tonalElevation = 1.dp,
+            ExposedDropdownMenuBox(
+                expanded = expanded,
+                onExpandedChange = { expanded = !expanded },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = NewObservationFieldSpacing)
             ) {
-                Text(
-                    text = stringResource(R.string.new_observation_category_placeholder),
-                    modifier = Modifier.padding(NewObservationCategoryPadding),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Start
+                OutlinedTextField(
+                    value = selectedCategory.ifBlank { stringResource(R.string.new_observation_category_placeholder) },
+                    onValueChange = {},
+                    readOnly = true,
+                    modifier = Modifier
+                        .menuAnchor()
+                        .fillMaxWidth(),
+                    trailingIcon = {
+                        ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
+                    }
                 )
+
+                ExposedDropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    categories.forEach { category ->
+                        DropdownMenuItem(
+                            text = { Text(category) },
+                            onClick = {
+                                selectedCategory = category
+                                expanded = false
+                            }
+                        )
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(NewObservationActionSpacing))
 
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(NewObservationActionSpacing),
-                verticalAlignment = Alignment.CenterVertically
+            Button(
+                onClick = {},
+                enabled = isFormValid,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .widthIn(max = NewObservationSaveButtonMaxWidth)
             ) {
-                Button(
-                    onClick = {},
-                    enabled = false,
-                    modifier = Modifier.widthIn(max = NewObservationSaveButtonMaxWidth)
-                ) {
-                    Text(text = stringResource(R.string.new_observation_save))
-                }
-
-                TextButton(onClick = onBackClick) {
-                    Text(text = stringResource(R.string.new_observation_cancel))
-                }
+                Text(text = stringResource(R.string.new_observation_save))
             }
         }
     }
@@ -133,14 +171,14 @@ fun NewObservationScreen(
 private val NewObservationHorizontalPadding = 24.dp
 private val NewObservationTopSpacing = 16.dp
 private val NewObservationFieldSpacing = 8.dp
-private val NewObservationActionSpacing = 16.dp
-private val NewObservationCategoryPadding = 16.dp
-private val NewObservationSaveButtonMaxWidth = 160.dp
+private val NewObservationActionSpacing = 24.dp
+private val NewObservationNotesMinHeight = 120.dp
+private val NewObservationSaveButtonMaxWidth = 180.dp
 
 @Preview(showBackground = true)
 @Composable
 private fun NewObservationScreenPreview() {
     NatureArchiveTheme {
-        NewObservationScreen(onBackClick = {})
+        NewObservationScreen()
     }
 }

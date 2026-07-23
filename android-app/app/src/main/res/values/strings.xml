@@ -11,7 +11,11 @@
     <string name="new_observation_title_label">Observation title</string>
     <string name="new_observation_notes_label">Notes</string>
     <string name="new_observation_category_label">Category</string>
-    <string name="new_observation_category_placeholder">Wildlife</string>
+    <string name="new_observation_category_placeholder">Select a category</string>
+    <string name="new_observation_category_wildlife">Wildlife</string>
+    <string name="new_observation_category_plant">Plant</string>
+    <string name="new_observation_category_bird">Bird</string>
+    <string name="new_observation_category_mushroom">Mushroom</string>
+    <string name="new_observation_category_trail">Trail</string>
     <string name="new_observation_save">Save</string>
-    <string name="new_observation_cancel">Cancel</string>
 </resources>
