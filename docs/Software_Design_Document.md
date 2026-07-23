@@ -2688,6 +2688,942 @@ However:
 
 
 
+\---
+
+
+
+\# 13. Error Handling Strategy
+
+
+
+Nature Archive should handle errors gracefully and provide users with clear, actionable feedback.
+
+
+
+Unexpected situations should never result in application crashes whenever reasonable recovery is possible.
+
+
+
+\---
+
+
+
+\## Error Handling Principles
+
+
+
+The application should:
+
+
+
+\- Prevent errors whenever possible.
+
+\- Recover automatically when appropriate.
+
+\- Inform the user using clear, human-friendly language.
+
+\- Preserve user data whenever possible.
+
+
+
+The user should never lose observations because of a temporary problem.
+
+
+
+\---
+
+
+
+\## Error Categories
+
+
+
+Errors generally fall into the following categories:
+
+
+
+| Category | Example |
+
+|----------|---------|
+
+| User Input | Required field left empty |
+
+| Device | Camera unavailable |
+
+| Location | GPS temporarily unavailable |
+
+| Storage | Insufficient storage space |
+
+| Import / Export | File read or write failure |
+
+| Unexpected | Unknown runtime exception |
+
+
+
+Each category should be handled appropriately.
+
+
+
+\---
+
+
+
+\## User Feedback
+
+
+
+Error messages should:
+
+
+
+\- Explain what happened.
+
+\- Explain what the user can do next.
+
+\- Avoid technical terminology.
+
+
+
+Example:
+
+
+
+"We couldn't determine your location.
+
+You can still save your observation."
+
+
+
+\---
+
+
+
+\## Logging
+
+
+
+Recoverable errors may be logged for debugging purposes.
+
+
+
+Logs should never expose personal user data.
+
+
+
+\---
+
+
+
+\## Data Protection
+
+
+
+Application errors should never corrupt observation records.
+
+
+
+Whenever practical, partially entered information should remain available.
+
+
+
+\---
+
+
+
+\## Offline Recovery
+
+
+
+Because Nature Archive is offline-first, temporary network failures should not interrupt normal application usage.
+
+
+
+Network-dependent features should fail gracefully without affecting local observations.
+
+
+
+\---
+
+
+
+\## Future Monitoring
+
+
+
+Crash reporting and analytics services may be introduced in future releases.
+
+
+
+Their implementation should respect the application's privacy principles.
+
+
+
+\---
+
+
+
+\# 14. Security \& Privacy
+
+
+
+Nature Archive is designed with a privacy-first philosophy.
+
+
+
+Users own their observations, photographs, notes, and location data.
+
+
+
+The application should collect only the information necessary to provide its intended functionality.
+
+
+
+\---
+
+
+
+\## Privacy Principles
+
+
+
+Nature Archive follows these principles:
+
+
+
+\- User data belongs to the user.
+
+\- Data collection should be transparent.
+
+\- Permissions should be requested only when needed.
+
+\- Local data should remain on the device unless the user explicitly chooses to export or synchronize it.
+
+
+
+Privacy should never be sacrificed for convenience.
+
+
+
+\---
+
+
+
+\## Permissions
+
+
+
+The application requests only the permissions required for specific features.
+
+
+
+Examples include:
+
+
+
+\- Camera
+
+\- Photos and Media
+
+\- Location
+
+
+
+Permissions should be requested at the moment they are needed rather than during the first launch.
+
+
+
+\---
+
+
+
+\## Local Storage
+
+
+
+Observation records are stored locally on the user's device.
+
+
+
+This includes:
+
+
+
+\- Photographs
+
+\- Notes
+
+\- Categories
+
+\- GPS coordinates
+
+\- Observation metadata
+
+
+
+Users remain in control of their local data.
+
+
+
+\---
+
+
+
+\## Future Cloud Synchronization
+
+
+
+Cloud synchronization is planned for a future release.
+
+
+
+If introduced, it will always be optional.
+
+
+
+Users should be able to continue using the application entirely offline without creating an account.
+
+
+
+\---
+
+
+
+\## Data Export
+
+
+
+Users should be able to export their own observations.
+
+
+
+Supported formats may include:
+
+
+
+\- ZIP archives
+
+\- CSV
+
+\- JSON
+
+
+
+Future versions may introduce additional export options.
+
+
+
+\---
+
+
+
+\## Data Deletion
+
+
+
+Users should be able to permanently delete:
+
+
+
+\- Individual observations
+
+\- Photos
+
+\- Categories
+
+\- Complete local database
+
+
+
+Deletion should be intentional and confirmed when necessary.
+
+
+
+\---
+
+
+
+\## Third-Party Services
+
+
+
+Nature Archive should minimize dependence on third-party services.
+
+
+
+Any external integrations should be carefully evaluated for their impact on user privacy.
+
+
+
+\---
+
+
+
+\## Security Principles
+
+
+
+The application should:
+
+
+
+\- Store data securely.
+
+\- Validate user input.
+
+\- Prevent accidental data loss.
+
+\- Follow Android security best practices.
+
+
+
+\---
+
+
+
+\## Future Enhancements
+
+
+
+Future versions may introduce:
+
+
+
+\- Encrypted local database
+
+\- Secure cloud backup
+
+\- End-to-end synchronization
+
+\- Optional user accounts
+
+
+
+These features should remain optional whenever practical.
+
+
+
+\---
+
+
+
+\# 15. Testing Strategy
+
+
+
+Testing ensures that Nature Archive remains stable, reliable, and enjoyable to use as the application grows.
+
+
+
+Every new feature should be verified before being merged into the main branch.
+
+
+
+Testing should focus on user experience as much as technical correctness.
+
+
+
+\---
+
+
+
+\## Testing Levels
+
+
+
+The project follows a layered testing approach.
+
+
+
+| Level | Purpose |
+
+|---------|---------|
+
+| Manual Testing | Verify the complete user experience |
+
+| Unit Testing | Validate business logic |
+
+| UI Testing | Verify screen interactions |
+
+| Integration Testing | Validate communication between components |
+
+
+
+\---
+
+
+
+\## Manual Testing
+
+
+
+Every sprint should end with manual testing on a physical Android device.
+
+
+
+The following should be verified:
+
+
+
+\- Navigation
+
+\- Screen layouts
+
+\- Orientation changes
+
+\- Dark mode
+
+\- Permission requests
+
+\- Offline behavior
+
+
+
+\---
+
+
+
+\## Unit Testing
+
+
+
+Business logic should be covered by unit tests whenever practical.
+
+
+
+Pure Kotlin classes should remain easy to test.
+
+
+
+\---
+
+
+
+\## UI Testing
+
+
+
+Critical user flows should eventually be covered using Jetpack Compose UI Tests.
+
+
+
+Examples include:
+
+
+
+\- Creating an observation
+
+\- Editing notes
+
+\- Searching observations
+
+\- Exporting data
+
+
+
+\---
+
+
+
+\## Device Testing
+
+
+
+The application should be tested on multiple Android versions and different screen sizes whenever possible.
+
+
+
+\---
+
+
+
+\## Regression Testing
+
+
+
+Previously completed features should be verified after introducing major functionality.
+
+
+
+No sprint should unintentionally break earlier work.
+
+
+
+\---
+
+
+
+\## Performance Testing
+
+
+
+The application should remain responsive while handling large collections of observations.
+
+
+
+Future testing should include:
+
+
+
+\- Large image libraries
+
+\- Thousands of observations
+
+\- Database performance
+
+\- Search speed
+
+
+
+\---
+
+
+
+\## Release Validation
+
+
+
+Every release candidate should be installed on a real device before publication.
+
+
+
+The published application should always represent a stable user experience.
+
+
+
+\---
+
+
+
+\# 16. Release Strategy
+
+
+
+Nature Archive will evolve through small, incremental releases.
+
+
+
+Each release should provide meaningful improvements while maintaining application stability.
+
+
+
+\---
+
+
+
+\## Development Stages
+
+
+
+The project follows these stages:
+
+
+
+| Stage | Purpose |
+
+|---------|---------|
+
+| MVP | Core offline observation workflow |
+
+| Beta | Feature-complete testing version |
+
+| Version 1.0 | Public release |
+
+| Future Versions | Continuous improvement |
+
+
+
+\---
+
+
+
+\## MVP Scope
+
+
+
+The MVP should include:
+
+
+
+\- Observation creation
+
+\- Local database
+
+\- Camera integration
+
+\- Gallery
+
+\- GPS recording
+
+\- Search
+
+\- Export
+
+
+
+The MVP should remain intentionally simple.
+
+
+
+\---
+
+
+
+\## Beta Phase
+
+
+
+The Beta release focuses on:
+
+
+
+\- Bug fixing
+
+\- Performance improvements
+
+\- UI polish
+
+\- User feedback
+
+
+
+No major architectural changes should occur during Beta.
+
+
+
+\---
+
+
+
+\## Version 1.0
+
+
+
+Version 1.0 represents a stable, polished application suitable for publication on Google Play.
+
+
+
+The release should prioritize quality over feature count.
+
+
+
+\---
+
+
+
+\## Future Releases
+
+
+
+Future versions may introduce:
+
+
+
+\- AI-assisted identification
+
+\- Cloud synchronization
+
+\- User accounts
+
+\- Shared collections
+
+\- Tablet optimization
+
+
+
+New features should never compromise the simplicity of the application's core experience.
+
+
+
+\---
+
+
+
+\# 17. Future Vision
+
+
+
+Nature Archive is designed to grow without losing its original purpose.
+
+
+
+The application begins as a personal offline field journal and may gradually evolve into a complete platform for documenting and exploring nature.
+
+
+
+Growth should always remain intentional.
+
+
+
+New features should support the core experience rather than complicate it.
+
+
+
+\---
+
+
+
+\## Long-Term Vision
+
+
+
+Nature Archive aims to become the preferred personal companion for nature enthusiasts.
+
+
+
+The application should remain:
+
+
+
+\- Private
+
+\- Reliable
+
+\- Offline-first
+
+\- Beautiful
+
+\- Easy to use
+
+
+
+Simplicity should remain one of the project's defining characteristics.
+
+
+
+\---
+
+
+
+\## Planned Evolution
+
+
+
+Future versions may introduce:
+
+
+
+\- AI-assisted species identification
+
+\- Cloud synchronization
+
+\- Optional user accounts
+
+\- Cross-device synchronization
+
+\- Tablet optimization
+
+\- iOS application
+
+\- Desktop companion
+
+\- Web companion
+
+\- Smart collections
+
+\- Advanced statistics
+
+\- Observation timelines
+
+
+
+These features should be introduced only when they improve the overall user experience.
+
+
+
+\---
+
+
+
+\## Product Philosophy
+
+
+
+Technology should support exploration—not distract from it.
+
+
+
+Nature Archive exists to help users preserve meaningful moments in nature.
+
+
+
+The application is not intended to become a social network or a content-sharing platform.
+
+
+
+Its primary purpose is to help users build a personal archive that remains valuable for years.
+
+
+
+\---
+
+
+
+\## Sustainability
+
+
+
+The architecture should allow the application to evolve over many years without requiring major rewrites.
+
+
+
+Each release should improve the product while preserving compatibility with existing user data.
+
+
+
+\---
+
+
+
+\# 18. Conclusion
+
+
+
+Nature Archive is more than a mobile application.
+
+
+
+It is a long-term project built around the idea of preserving meaningful moments in nature.
+
+
+
+This Software Design Document establishes the architectural foundation, development principles, and technical direction that will guide the project throughout its lifecycle.
+
+
+
+The document is intended to evolve alongside the application while preserving consistency in design, engineering, and user experience.
+
+
+
+By following the principles defined in this document, Nature Archive can continue to grow without losing its identity.
+
+
+
+Every feature should contribute to the same vision:
+
+
+
+Helping people explore nature today and remember it forever.
+
+
+
+\---
+
+
+
+\*\*Document Status\*\*
+
+
+
+Version: \*\*1.0\*\*
+
+
+
+Status: \*\*Stable\*\*
+
+
+
+This document represents the initial architectural baseline for the Nature Archive project.
+
 
 
 

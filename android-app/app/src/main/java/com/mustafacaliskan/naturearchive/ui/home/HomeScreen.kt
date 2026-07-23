@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,7 +27,8 @@ import com.mustafacaliskan.naturearchive.ui.theme.NatureArchiveTheme
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onNewObservationClick: () -> Unit = {}
 ) {
     NatureArchiveScaffold(
         title = stringResource(R.string.home_top_bar_title),
@@ -67,6 +69,20 @@ fun HomeScreen(
 
             HomeEmptyState()
 
+            Spacer(modifier = Modifier.height(HomeEmptyStateToButtonSpacing))
+
+            Button(
+                onClick = onNewObservationClick,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .widthIn(max = HomeButtonMaxWidth)
+            ) {
+                Text(
+                    text = stringResource(R.string.home_new_observation),
+                    style = MaterialTheme.typography.labelLarge
+                )
+            }
+
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
@@ -89,6 +105,8 @@ private val HomeLogoToHeroSpacing = 24.dp
 private val HomeHeroMaxWidth = 480.dp
 private val HomeHeroSubtitleTopPadding = 8.dp
 private val HomeHeroToEmptyStateSpacing = 40.dp
+private val HomeEmptyStateToButtonSpacing = 24.dp
+private val HomeButtonMaxWidth = 400.dp
 private val HomeFooterTopPadding = 24.dp
 private val HomeFooterBottomPadding = 24.dp
 
@@ -96,6 +114,6 @@ private val HomeFooterBottomPadding = 24.dp
 @Composable
 private fun HomeScreenPreview() {
     NatureArchiveTheme {
-        HomeScreen()
+        HomeScreen(onNewObservationClick = {})
     }
 }

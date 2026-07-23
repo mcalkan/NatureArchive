@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mustafacaliskan.naturearchive.ui.home.HomeScreen
+import com.mustafacaliskan.naturearchive.ui.observation.NewObservationScreen
 
 @Composable
 fun NatureArchiveNavGraph(
@@ -19,7 +20,19 @@ fun NatureArchiveNavGraph(
         modifier = modifier
     ) {
         composable(Routes.Home) {
-            HomeScreen()
+            HomeScreen(
+                onNewObservationClick = {
+                    navController.navigate(Routes.NewObservation)
+                }
+            )
+        }
+
+        composable(Routes.NewObservation) {
+            NewObservationScreen(
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }

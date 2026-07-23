@@ -5,5 +5,13 @@
     <string name="home_subtitle">A calm place to keep every trail, sighting, and memory worth returning to.</string>
     <string name="home_empty_title">Your field journal is ready</string>
     <string name="home_empty_description">Start with what you notice in the wild — a mushroom, a bird, a trail, or a moment worth remembering.</string>
+    <string name="home_new_observation">New Observation</string>
     <string name="home_offline_hint">Works fully offline</string>
+    <string name="new_observation_title">New Observation</string>
+    <string name="new_observation_title_label">Observation title</string>
+    <string name="new_observation_notes_label">Notes</string>
+    <string name="new_observation_category_label">Category</string>
+    <string name="new_observation_category_placeholder">Wildlife</string>
+    <string name="new_observation_save">Save</string>
+    <string name="new_observation_cancel">Cancel</string>
 </resources>
