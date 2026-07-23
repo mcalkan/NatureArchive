@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 fun NatureArchiveScaffold(
     title: String,
     modifier: Modifier = Modifier,
+    snackbarHost: @Composable () -> Unit = {},
     content: @Composable (PaddingValues) -> Unit
 ) {
     Scaffold(
@@ -30,6 +31,7 @@ fun NatureArchiveScaffold(
                 )
             )
         },
+        snackbarHost = snackbarHost,
         content = content
     )
 }

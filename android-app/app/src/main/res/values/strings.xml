@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Nature Archive</string>
     <string name="home_top_bar_title">Nature Archive</string>
-    <string name="home_headline">Your personal nature journal</string>
-    <string name="home_subtitle">Record and preserve your observations in the wild.</string>
+    <string name="home_headline">Discover the wild. Preserve the moment.</string>
+    <string name="home_subtitle">A calm place to keep every trail, sighting, and memory worth returning to.</string>
+    <string name="home_empty_title">Your field journal is ready</string>
+    <string name="home_empty_description">Start with what you notice in the wild — a mushroom, a bird, a trail, or a moment worth remembering.</string>
+    <string name="home_offline_hint">Works fully offline</string>
 </resources>
