@@ -17,10 +17,12 @@ import java.util.Locale
 @Composable
 fun ObservationCard(
     observation: ObservationEntity,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null
 ) {
     Card(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth(),
+        onClick = { onClick?.invoke() }
     ) {
         Column(
             modifier = Modifier.padding(16.dp)

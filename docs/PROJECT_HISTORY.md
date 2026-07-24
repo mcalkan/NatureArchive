@@ -756,5 +756,69 @@ Nature Archive can now:
 
 
 
+\# Sprint 7 — Observation Detail
+
+
+
+Status: ✅ Completed
+
+
+
+\### Completed Features
+
+
+
+\- Added Observation Detail screen.
+
+\- Added navigation from Observation List to Observation Detail.
+
+\- Implemented observation lookup by ID.
+
+\- Added Repository support for loading a single observation.
+
+\- Added DAO query for retrieving one observation.
+
+\- Observation Card is now clickable while remaining presentation-only.
+
+\- Added graceful handling for missing observations.
+
+\- Preserved Offline First architecture.
+
+
+
+\### Architecture
+
+
+
+Current application flow:
+
+
+
+UI
+
+↓
+
+Repository
+
+↓
+
+DAO
+
+↓
+
+Room
+
+↓
+
+SQLite
+
+
+
+No additional architectural layers were introduced.
+
+
+
+
+
 
 

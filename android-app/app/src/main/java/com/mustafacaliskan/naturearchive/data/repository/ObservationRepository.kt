@@ -13,4 +13,8 @@ class ObservationRepository(
     suspend fun getAllObservations(): List<ObservationEntity> {
         return observationDao.getAllObservations()
     }
+
+    suspend fun getObservationById(id: Long): ObservationEntity? {
+        return observationDao.getObservationById(id)
+    }
 }

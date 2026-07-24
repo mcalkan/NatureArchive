@@ -12,4 +12,7 @@ interface ObservationDao {
 
     @androidx.room.Query("SELECT * FROM observations ORDER BY createdAt DESC")
     suspend fun getAllObservations(): List<ObservationEntity>
+
+    @androidx.room.Query("SELECT * FROM observations WHERE id = :id")
+    suspend fun getObservationById(id: Long): ObservationEntity?
 }

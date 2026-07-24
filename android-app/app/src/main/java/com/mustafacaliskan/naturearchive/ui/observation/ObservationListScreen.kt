@@ -35,7 +35,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun ObservationListScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onObservationClick: (Long) -> Unit = {}
 ) {
     val context = LocalContext.current
     val repository = remember(context) {
@@ -80,7 +81,10 @@ fun ObservationListScreen(
                     items = observations,
                     key = { observation -> observation.id }
                 ) { observation ->
-                    ObservationCard(observation = observation)
+                    ObservationCard(
+                        observation = observation,
+                        onClick = { onObservationClick(observation.id.toLong()) }
+                    )
                 }
             }
         }

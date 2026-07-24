@@ -329,3 +329,21 @@ Observation cards should display only:
 
 No edit, delete, detail editing, search, filtering, or sorting functionality should be introduced before their dedicated sprint.
 
+---
+
+## Observation Detail Pattern (Sprint 7)
+
+Observation details should always be loaded through the Repository layer using the Observation ID.
+
+Navigation must pass only lightweight identifiers between screens.
+
+UI components must never access Room or DAO directly.
+
+ObservationCard remains a presentation-only component and should expose only an optional `onClick` callback.
+
+The Observation Detail screen is read-only and should not introduce editing or business logic.
+
+Future editing functionality will be implemented in a dedicated sprint.
+
+
+

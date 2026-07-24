@@ -288,5 +288,47 @@ Snackbar, Toast, or automatic navigation after saving have been intentionally po
 
 
 
+\## Decision 008 — Observation Detail Architecture
+
+
+
+\*\*Sprint:\*\* Sprint 7
+
+
+
+\*\*Decision\*\*
+
+
+
+Observation details are loaded using only the Observation ID passed through Navigation.
+
+
+
+The Detail screen retrieves data through the Repository, which delegates to the DAO.
+
+
+
+\*\*Reason\*\*
+
+
+
+Passing only lightweight identifiers keeps navigation simple, avoids transferring large objects between screens, and preserves the project's clean architecture.
+
+
+
+\*\*Impact\*\*
+
+
+
+\- Navigation remains lightweight.
+
+\- UI stays independent from Room.
+
+\- Repository remains intentionally small.
+
+\- Architecture continues to grow only when needed.
+
+
+
 
 

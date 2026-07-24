@@ -11,6 +11,14 @@
     <string name="observation_list_title">My Observations</string>
     <string name="observation_list_empty_title">Your observations will appear here</string>
     <string name="observation_list_empty_description">Save a few observations to build your personal archive.</string>
+    <string name="observation_detail_title">Observation</string>
+    <string name="observation_detail_category_label">Category</string>
+    <string name="observation_detail_title_label">Title</string>
+    <string name="observation_detail_created_label">Created Date</string>
+    <string name="observation_detail_notes_label">Notes</string>
+    <string name="observation_detail_notes_empty">No notes added.</string>
+    <string name="observation_detail_unavailable">This observation is unavailable.</string>
+    <string name="observation_detail_back">Back</string>
     <string name="new_observation_title">New Observation</string>
     <string name="new_observation_title_label">Observation title</string>
     <string name="new_observation_notes_label">Notes</string>

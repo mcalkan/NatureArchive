@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mustafacaliskan.naturearchive.ui.home.HomeScreen
 import com.mustafacaliskan.naturearchive.ui.observation.NewObservationScreen
+import com.mustafacaliskan.naturearchive.ui.observation.ObservationDetailScreen
 import com.mustafacaliskan.naturearchive.ui.observation.ObservationListScreen
 
 @Composable
@@ -36,7 +37,21 @@ fun NatureArchiveNavGraph(
         }
 
         composable(Routes.ObservationList) {
-            ObservationListScreen()
+            ObservationListScreen(
+                onObservationClick = { observationId ->
+                    navController.navigate("${Routes.ObservationDetail}/${observationId}")
+                }
+            )
+        }
+
+        composable("${Routes.ObservationDetail}/{observationId}") { backStackEntry ->
+            val observationId = backStackEntry.arguments?.getString("observationId")?.toLongOrNull()
+            ObservationDetailScreen(
+                observationId = observationId,
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 }
