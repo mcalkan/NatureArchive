@@ -6,7 +6,11 @@
     <string name="home_empty_title">Your field journal is ready</string>
     <string name="home_empty_description">Start with what you notice in the wild — a mushroom, a bird, a trail, or a moment worth remembering.</string>
     <string name="home_new_observation">New Observation</string>
+    <string name="home_my_observations">My Observations</string>
     <string name="home_offline_hint">Works fully offline</string>
+    <string name="observation_list_title">My Observations</string>
+    <string name="observation_list_empty_title">Your observations will appear here</string>
+    <string name="observation_list_empty_description">Save a few observations to build your personal archive.</string>
     <string name="new_observation_title">New Observation</string>
     <string name="new_observation_title_label">Observation title</string>
     <string name="new_observation_notes_label">Notes</string>

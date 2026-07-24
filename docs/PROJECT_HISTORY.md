@@ -672,3 +672,89 @@ This workaround will be reviewed and removed after the Android
 
 toolchain stabilizes or an updated Room/KSP configuration is adopted.
 
+
+
+\# Sprint 6 – Observation List
+
+
+
+Status: ✅ Completed
+
+
+
+\## Goal
+
+
+
+Introduce the application's first observation reading workflow using Room.
+
+
+
+\## Completed
+
+
+
+\- Added DAO read operation.
+
+\- Extended Repository with observation retrieval.
+
+\- Added Observation List screen.
+
+\- Added reusable Observation Card component.
+
+\- Added reusable Observation Empty State.
+
+\- Connected Home to the Observation List.
+
+\- Display observations using LazyColumn.
+
+\- Added stable keys for list items.
+
+\- Verified Room persistence across application restarts.
+
+
+
+\## Technical Notes
+
+
+
+Architecture remains:
+
+
+
+UI
+
+→ Repository
+
+→ DAO
+
+→ Room
+
+→ SQLite
+
+
+
+No ViewModel, Dependency Injection, Flow, or other architecture layers were introduced.
+
+
+
+\## Result
+
+
+
+Nature Archive can now:
+
+
+
+\- Save observations locally.
+
+\- Read observations from Room.
+
+\- Persist data between app launches.
+
+\- Display saved observations in a clean Material 3 list.
+
+
+
+
+

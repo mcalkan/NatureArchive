@@ -164,3 +164,129 @@ Dependency Injection (Hilt) was intentionally postponed to keep Sprint 5 focused
 
 \- The architecture remains aligned with the project's "Offline First" and "Incremental Architecture" principles.
 
+
+
+\### Sprint 6
+
+
+
+Observation save currently completes silently.
+
+
+
+User feedback (Snackbar, Toast or automatic navigation after save) was intentionally postponed to a future UX-focused sprint in order to keep Sprint 6 focused on Room read functionality.
+
+
+
+\## Sprint 6 Decisions
+
+
+
+\### Observation List Architecture
+
+
+
+Observation retrieval follows the established project architecture:
+
+
+
+UI
+
+→ Repository
+
+→ DAO
+
+→ Room
+
+→ SQLite
+
+
+
+The UI layer continues to avoid direct DAO access.
+
+
+
+\---
+
+
+
+\### Temporary Repository Construction
+
+
+
+Repository instances are currently created directly inside the UI layer.
+
+
+
+This is considered a temporary implementation until Dependency Injection is introduced in a later sprint.
+
+
+
+\---
+
+
+
+\### Observation Card Scope
+
+
+
+Observation cards intentionally remain lightweight.
+
+
+
+Displayed information:
+
+
+
+\- Category
+
+\- Title
+
+\- Notes preview
+
+\- Created date
+
+
+
+Features intentionally postponed:
+
+
+
+\- Detail editing
+
+\- Delete
+
+\- Search
+
+\- Sorting
+
+\- Filtering
+
+\- Swipe actions
+
+\- Photos
+
+\- Maps
+
+\- GPS
+
+
+
+\---
+
+
+
+\### UX Feedback
+
+
+
+Saving an observation currently completes silently.
+
+
+
+Snackbar, Toast, or automatic navigation after saving have been intentionally postponed to a future UX-focused sprint in order to keep Sprint 6 focused on local data retrieval.
+
+
+
+
+

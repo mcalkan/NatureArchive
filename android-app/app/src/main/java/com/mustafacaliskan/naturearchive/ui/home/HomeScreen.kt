@@ -28,7 +28,8 @@ import com.mustafacaliskan.naturearchive.ui.theme.NatureArchiveTheme
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    onNewObservationClick: () -> Unit = {}
+    onNewObservationClick: () -> Unit = {},
+    onMyObservationsClick: () -> Unit = {}
 ) {
     NatureArchiveScaffold(
         title = stringResource(R.string.home_top_bar_title),
@@ -83,6 +84,20 @@ fun HomeScreen(
                 )
             }
 
+            Spacer(modifier = Modifier.height(HomeButtonSpacing))
+
+            Button(
+                onClick = onMyObservationsClick,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .widthIn(max = HomeButtonMaxWidth)
+            ) {
+                Text(
+                    text = stringResource(R.string.home_my_observations),
+                    style = MaterialTheme.typography.labelLarge
+                )
+            }
+
             Spacer(modifier = Modifier.weight(1f))
 
             Text(
@@ -106,6 +121,7 @@ private val HomeHeroMaxWidth = 480.dp
 private val HomeHeroSubtitleTopPadding = 8.dp
 private val HomeHeroToEmptyStateSpacing = 40.dp
 private val HomeEmptyStateToButtonSpacing = 24.dp
+private val HomeButtonSpacing = 12.dp
 private val HomeButtonMaxWidth = 400.dp
 private val HomeFooterTopPadding = 24.dp
 private val HomeFooterBottomPadding = 24.dp

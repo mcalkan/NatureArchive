@@ -303,3 +303,29 @@ Avoid introducing ViewModels prematurely.
 - Keep repositories lightweight and focused on the current sprint scope.
 - Avoid direct database access from UI components unless explicitly documented during early project stages.
 
+## Sprint 6 Notes
+
+### Observation List
+
+Sprint 6 introduces the first read workflow of the application.
+
+Guidelines:
+
+- Read observations only through the Repository.
+- The UI must never access Room or DAO directly.
+- Keep the Observation List lightweight and focused.
+- Reusable UI components (ObservationCard and ObservationEmptyState) should remain presentation-only.
+- Do not introduce ViewModel, Hilt, Flow, or StateFlow before they are actually needed.
+
+The current Repository creation inside the UI layer is an intentional temporary solution.
+It will be replaced by Dependency Injection in a future sprint.
+
+Observation cards should display only:
+
+- Category
+- Title
+- Notes preview
+- Created date
+
+No edit, delete, detail editing, search, filtering, or sorting functionality should be introduced before their dedicated sprint.
+

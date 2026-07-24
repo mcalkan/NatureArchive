@@ -9,4 +9,7 @@ import com.mustafacaliskan.naturearchive.data.local.entity.ObservationEntity
 interface ObservationDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertObservation(observation: ObservationEntity): Long
+
+    @androidx.room.Query("SELECT * FROM observations ORDER BY createdAt DESC")
+    suspend fun getAllObservations(): List<ObservationEntity>
 }

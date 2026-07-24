@@ -9,5 +9,6 @@ data class ObservationEntity(
     val id: Int = 0,
     val title: String,
     val notes: String,
-    val category: String
+    val category: String,
+    val createdAt: Long = System.currentTimeMillis()
 )

@@ -57,6 +57,20 @@ Avoid premature abstraction.
 \---
 
 
+## Architecture Grows Only When Needed
+
+
+
+Do not introduce architectural layers before they become necessary.
+
+
+
+Keep the architecture lightweight and evolve it incrementally as the project grows.
+
+
+
+---
+
 
 \## Material 3
 

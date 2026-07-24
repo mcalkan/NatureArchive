@@ -9,4 +9,8 @@ class ObservationRepository(
     suspend fun insertObservation(observation: ObservationEntity): Long {
         return observationDao.insertObservation(observation)
     }
+
+    suspend fun getAllObservations(): List<ObservationEntity> {
+        return observationDao.getAllObservations()
+    }
 }

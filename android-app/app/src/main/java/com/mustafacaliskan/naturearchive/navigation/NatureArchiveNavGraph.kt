@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mustafacaliskan.naturearchive.ui.home.HomeScreen
 import com.mustafacaliskan.naturearchive.ui.observation.NewObservationScreen
+import com.mustafacaliskan.naturearchive.ui.observation.ObservationListScreen
 
 @Composable
 fun NatureArchiveNavGraph(
@@ -23,12 +24,19 @@ fun NatureArchiveNavGraph(
             HomeScreen(
                 onNewObservationClick = {
                     navController.navigate(Routes.NewObservation)
+                },
+                onMyObservationsClick = {
+                    navController.navigate(Routes.ObservationList)
                 }
             )
         }
 
         composable(Routes.NewObservation) {
             NewObservationScreen()
+        }
+
+        composable(Routes.ObservationList) {
+            ObservationListScreen()
         }
     }
 }
