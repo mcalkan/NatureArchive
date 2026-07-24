@@ -24,21 +24,35 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mustafacaliskan.naturearchive.R
+import com.mustafacaliskan.naturearchive.data.local.database.NatureArchiveDatabase
+import com.mustafacaliskan.naturearchive.data.local.entity.ObservationEntity
+import com.mustafacaliskan.naturearchive.data.repository.ObservationRepository
 import com.mustafacaliskan.naturearchive.ui.components.NatureArchiveScaffold
 import com.mustafacaliskan.naturearchive.ui.theme.NatureArchiveTheme
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NewObservationScreen(
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    val repository = remember(context) {
+        ObservationRepository(
+            NatureArchiveDatabase.getInstance(context).observationDao()
+        )
+    }
+    val coroutineScope = rememberCoroutineScope()
+
     var title by rememberSaveable { mutableStateOf("") }
     var notes by rememberSaveable { mutableStateOf("") }
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -52,9 +66,9 @@ fun NewObservationScreen(
         stringResource(R.string.new_observation_category_trail)
     )
 
-    val isFormValid by remember(title, notes) {
+    val isFormValid by remember(title, notes, selectedCategory) {
         derivedStateOf {
-            title.trim().isNotEmpty() && notes.trim().isNotEmpty()
+            title.trim().isNotEmpty() && notes.trim().isNotEmpty() && selectedCategory.isNotBlank()
         }
     }
 
@@ -156,7 +170,19 @@ fun NewObservationScreen(
             Spacer(modifier = Modifier.height(NewObservationActionSpacing))
 
             Button(
-                onClick = {},
+                onClick = {
+                    if (isFormValid) {
+                        val observation = ObservationEntity(
+                            title = title.trim(),
+                            notes = notes.trim(),
+                            category = selectedCategory
+                        )
+
+                        coroutineScope.launch {
+                            repository.insertObservation(observation)
+                        }
+                    }
+                },
                 enabled = isFormValid,
                 modifier = Modifier
                     .fillMaxWidth()

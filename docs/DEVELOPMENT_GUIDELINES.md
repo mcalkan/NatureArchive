@@ -295,3 +295,11 @@ Prefer:
 - derivedStateOf
 
 Avoid introducing ViewModels prematurely.
+
+### Room Persistence
+
+- Use Room as the primary local persistence solution.
+- Access Room only through the Repository layer.
+- Keep repositories lightweight and focused on the current sprint scope.
+- Avoid direct database access from UI components unless explicitly documented during early project stages.
+

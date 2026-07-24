@@ -116,8 +116,6 @@ Planned:
 
 Status: ✅ Completed
 
-l
-
 
 
 \---
@@ -143,6 +141,8 @@ l
 \- Save observations locally
 
 
+
+Status: ✅ Completed
 
 \---
 

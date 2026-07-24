@@ -118,3 +118,49 @@ Applied in:
 
 Sprint 04
 
+
+
+\## Decision: Introduce Room for Local Persistence
+
+
+
+\*\*Sprint:\*\* Sprint 5
+
+
+
+\### Context
+
+
+
+The project required a reliable offline storage mechanism while keeping the architecture simple and incremental.
+
+
+
+\### Decision
+
+
+
+Room was selected as the local persistence solution.
+
+
+
+A lightweight Repository layer was introduced between the UI and Room to avoid direct DAO usage and to prepare the project for future architectural improvements.
+
+
+
+Dependency Injection (Hilt) was intentionally postponed to keep Sprint 5 focused on persistence only.
+
+
+
+\### Consequences
+
+
+
+\- Offline data persistence is now available.
+
+\- UI remains independent of Room APIs.
+
+\- Future ViewModels can consume the Repository without major refactoring.
+
+\- The architecture remains aligned with the project's "Offline First" and "Incremental Architecture" principles.
+
